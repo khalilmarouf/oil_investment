@@ -3,7 +3,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let userAnswers = []; 
 
-const STORAGE_KEY = 'quiz_app_progress'; // مفتاح الحفظ في المتصفح
+const STORAGE_KEY = 'quiz_app_progress'; 
 
 const quizScreen = document.getElementById('quiz-screen');
 const resultScreen = document.getElementById('result-screen');
@@ -20,12 +20,12 @@ const progressBar = document.getElementById('progress-bar');
 const questionCount = document.getElementById('question-count');
 const scoreLive = document.getElementById('score-live');
 
-// جلب البيانات
+
 fetch('questions.json')
     .then(response => response.json())
     .then(data => {
         questions = data;
-        // بعد تحميل الأسئلة، نتحقق هل هناك تقدم محفوظ؟
+     
         checkProgressAndStart();
     })
     .catch(error => {
@@ -37,18 +37,18 @@ function checkProgressAndStart() {
     
     if (savedData) {
         const progress = JSON.parse(savedData);
-        // التحقق من صحة البيانات المحفوظة
+   
         if (progress && progress.index < questions.length) {
-            // استعادة البيانات
+     
             currentQuestionIndex = progress.index;
             score = progress.score;
             userAnswers = progress.history;
             
-            // البدء من حيث توقف
+       
             showScreen(quizScreen);
             loadQuestion();
         } else {
-            // إذا كان الاختبار منتهياً سابقاً، نبدأ من جديد
+          
             startQuiz();
         }
     } else {
@@ -57,7 +57,7 @@ function checkProgressAndStart() {
 }
 
 function startQuiz() {
-    // مسح الذاكرة عند بدء اختبار جديد
+
     localStorage.removeItem(STORAGE_KEY);
     
     currentQuestionIndex = 0;
@@ -138,7 +138,7 @@ submitBtn.addEventListener('click', () => {
         selectedOptionBtn.classList.add('wrong');
     }
 
-    // تحديث النتيجة الحالية في الواجهة
+    
     scoreLive.textContent = `النتيجة: ${score}`;
 
     explanationText.textContent = currentQuestion.explanation;
@@ -148,14 +148,11 @@ submitBtn.addEventListener('click', () => {
     submitBtn.classList.add('hidden');
     nextBtn.classList.remove('hidden');
 
-    // ملاحظة: نحفظ التقدم هنا (في حال أغلق المتصفح بعد الإجابة وقبل الانتقال للتالي)
-    // لكن الأفضل الحفظ عند الانتقال للسؤال التالي لضمان الاستقرار
 });
 
 nextBtn.addEventListener('click', () => {
     currentQuestionIndex++;
-    
-    // حفظ التقدم عند الانتقال للسؤال التالي
+
     if (currentQuestionIndex < questions.length) {
         saveProgress();
         loadQuestion();
@@ -165,7 +162,6 @@ nextBtn.addEventListener('click', () => {
 });
 
 function finishQuiz() {
-    // مسح الذاكرة لأن الاختبار انتهى
     localStorage.removeItem(STORAGE_KEY);
 
     showScreen(resultScreen);

@@ -30,7 +30,7 @@ body {
     flex-direction: column;
 }
 
-/* تنسيق التوقيع الجديد */
+
 .maker-credit {
     text-align: center;
     font-size: 0.8rem;
@@ -39,10 +39,11 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: sans-serif; /* ليكون بالإنجليزية بشكل جميل */
+    font-family: sans-serif; 
+   
 }
 
-/* بقية التنسيقات كما هي */
+
 #quiz-screen, #result-screen, #review-screen {
     background: var(--card-bg);
     padding: 30px;
