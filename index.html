@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil Investment Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="maker-credit">Made by Khalil Marouf</div>
+
+        <div id="quiz-screen">
+            <header class="quiz-header">
+                <div class="progress-info">
+                    <span id="question-count">سؤال 1 من 0</span>
+                    <span id="score-live">النتيجة الحالية: 0</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                </div>
+            </header>
+
+            <main class="question-card">
+                <h2 id="question-text">جاري تحميل السؤال...</h2>
+                <div id="options-container" class="options-list"></div>
+            </main>
+
+            <div id="feedback-section" class="feedback hidden">
+                <div class="feedback-content">
+                    <h3>💡 الشرح:</h3>
+                    <p id="explanation-text"></p>
+                    <hr>
+                    <h3>📚 المرجع:</h3>
+                    <p id="reference-text" class="ref-text"></p>
+                </div>
+            </div>
+
+            <footer class="quiz-footer">
+                <button id="submit-btn" class="btn primary-btn" disabled>تأكيد الإجابة</button>
+                <button id="next-btn" class="btn next-btn hidden">السؤال التالي</button>
+            </footer>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <div class="result-card">
+                <h1>انتهى الاختبار! 🎉</h1>
+                <div class="score-circle">
+                    <span id="final-score">0%</span>
+                </div>
+                <p id="result-message"></p>
+                <div class="action-buttons">
+                    <button id="review-btn" class="btn secondary-btn">مراجعة الإجابات</button>
+                    <button id="restart-btn" class="btn primary-btn">إعادة الاختبار</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="review-screen" class="hidden">
+            <header class="review-header">
+                <h2>مراجعة الاختبار</h2>
+                <button id="back-to-result" class="btn small-btn">عودة</button>
+            </header>
+            <div id="review-container" class="review-list"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
